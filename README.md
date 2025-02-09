@@ -11,7 +11,7 @@ Welcome to the Memory Game! This project is a classic memory matching game devel
 - Random Pictures For Each Time.
 - You Can Add Pictures As You Want; To increase the randomness of the Pictures.
 
-## Technologies Used
+## Using
 - **C#**: The primary programming language for game logic.
 - **Windows Forms**: Framework for building the graphical user interface.
 - **Guna 2 UI**: Third-party UI component library for aesthetic elements and controls.
