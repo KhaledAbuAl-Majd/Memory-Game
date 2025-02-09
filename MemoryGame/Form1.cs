@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using MemoryGame.Properties;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace MemoryGame
 {
@@ -21,16 +23,17 @@ namespace MemoryGame
             struct stGameStatus
             {
                 public byte GameTime;
-                public byte NumOfOpenedBoxes;
                 public byte TimeLeft;
+                public byte FullScore;
                 public byte Score;
-
             }
             static Form1 frm;
             Image[] images;
             Guna2PictureBox[] Boxes;
             Guna2PictureBox OpenedBox1, OpenedBox2;
             bool IsRightChoice;
+            byte NumOfOpenedBoxes;
+            byte PreStartTime;
             stGameStatus GameStatus;
             void InitializeImagesArray()
             {
@@ -39,13 +42,13 @@ namespace MemoryGame
                 Resources.falcon_5508863_1920,Resources.dog_7453842_1920,Resources.cartoon_7918608_1920,
                 Resources.ai_generated_8647702_1920,Resources.elephant_8809485_1920,Resources.rabbit,
                 Resources.Lion
-                }; 
+                };
             }
             void RandomizeImagesArray()
             {
                 Random rand = new Random();
 
-                for(byte i = 0; i < Boxes.Length / 2; i++)
+                for (byte i = 0; i < GameStatus.FullScore; i++)
                 {
                     short randomindex = Convert.ToInt16(rand.Next(images.Length));
                     Image temp = images[i];
@@ -63,7 +66,7 @@ namespace MemoryGame
             {
                 Random rand = new Random();
 
-                for(byte i = 0; i < Boxes.Length/2; i++)
+                for (byte i = 0; i < GameStatus.FullScore; i++) 
                 {
                     for (byte j = 0; j < 2; j++)
                     {
@@ -90,7 +93,7 @@ namespace MemoryGame
             }
             void DiscoverAllBoxes()
             {
-                foreach(Guna2PictureBox pb in Boxes)
+                foreach (Guna2PictureBox pb in Boxes)
                 {
                     DiscoverBox(pb);
                 }
@@ -100,14 +103,25 @@ namespace MemoryGame
                 foreach (Guna2PictureBox pb in Boxes)
                     CoverBox(pb);
             }
-            void EnableOrDisableBox(Guna2PictureBox pb,bool Value)
+            void EnableOrDisableBox(Guna2PictureBox pb, bool Value)
             {
                 pb.Enabled = Value;
             }
             void EnableOrDisableAllBoxes(bool Value)
             {
                 foreach (Guna2PictureBox pb in Boxes)
-                    EnableOrDisableBox(pb,Value);
+                    EnableOrDisableBox(pb, Value);
+            }
+            void ChangeBoxBackColor(Guna2PictureBox pb,Color color)
+            {
+                pb.BackColor = color;
+            }
+            void ChangeAllBoxesBackColor(Color color)
+            {
+                foreach(Guna2PictureBox pb in Boxes)
+                {
+                    ChangeBoxBackColor(pb, color);
+                }
             }
             void BoxesIsSame()
             {
@@ -115,6 +129,8 @@ namespace MemoryGame
                 IsRightChoice = true;
                 EnableOrDisableBox(OpenedBox1, false);
                 EnableOrDisableBox(OpenedBox2, false);
+                ChangeBoxBackColor(OpenedBox1, Color.LimeGreen);
+                ChangeBoxBackColor(OpenedBox2, Color.LimeGreen);
                 ChangeScoreLabelValue();
                 ChangeScoreProogressBarValue();
                 CheckWin();
@@ -122,6 +138,8 @@ namespace MemoryGame
             void BoxesIsNotSame()
             {
                 IsRightChoice = false;
+                EnableOrDisableBox(OpenedBox1, true);
+                
                 //CoverBox(OpenedBox1);
                 //CoverBox(OpenedBox2);
             }
@@ -154,78 +172,159 @@ namespace MemoryGame
             }
             void ChangeTimerLableValue()
             {
-                frm.lblTimer.Text = GameStatus.TimeLeft.ToString("D2"); 
+                frm.lblTimer.Text = GameStatus.TimeLeft.ToString("D2");
             }
             void ChangeTimerProgressBarValue()
             {
                 frm.cpbTimer.Value = GameStatus.TimeLeft;
             }
-            void ResultMessage(string Message ,MessageDialogIcon icon )
+            void ResultMessage(string Message, MessageDialogIcon icon)
             {
                 frm.guna2MessageDialog1.Icon = icon;
                 frm.guna2MessageDialog1.Show(Message, "Game Result");
+            }
+            void ChangeResultLable(string Text)
+            {
+                frm.lblResult.Text = Text;
             }
             void GameOver()
             {
                 EnableOrDisableTimer(false);
                 EnableOrDisableAllBoxes(false);
+                ChangePlay_Stop_ResetButtonTextAndToolTip("Reset", "Press To Reset");
+                GameMode = enGameMode.End;
             }
             void CheckWin()
             {
-                if (GameStatus.Score == Boxes.Length / 2)
+                if (GameStatus.Score == GameStatus.FullScore) 
                 {
                     GameOver();
                     ResultMessage("You Win", MessageDialogIcon.Information);
+                    ChangeResultLable("Win");
                 }
             }
             void TimeOver()
             {
                 GameOver();
                 DiscoverAllBoxes();
-                ResultMessage("You Are Lose",MessageDialogIcon.Error);
+                ResultMessage("You Are Lose", MessageDialogIcon.Error);
+                ChangeResultLable("Lose");
             }
+            void EnableOrDisableLevelComboBox(bool Value)
+            {
+                frm.cbLevel.Enabled = Value;
+            }
+            void ResetBoxes()
+            {
+                CoverAllBoxes();
+                EnableOrDisableAllBoxes(false);
+                //ChangeAllBoxesBackColor(Color.Transparent);
 
-            public enum enGameMode { Play, Start, Stop, End }
+                foreach (Guna2PictureBox pb in Boxes)
+                {
+                    pb.Tag = null;
+                    ChangeBoxBackColor(pb, Color.Transparent);
+                }
+            }
+            void ChangeTimeLeftAndTimeLabels()
+            {
+                GameStatus.TimeLeft = GameStatus.GameTime;
+                ChangeTimerLableValue();
+                ChangeTimerProgressBarValue();
+            }
+            void ChangeGameTime(byte Value)
+            {
+                GameStatus.GameTime = Value;
+                frm.cpbTimer.Maximum = GameStatus.GameTime;
+                frm.cpbTimer.Value = GameStatus.GameTime;
+                ChangeTimeLeftAndTimeLabels();
+            }
+            void ChangePlay_Stop_ResetButtonTextAndToolTip(string btnText,string ToolTipText)
+            {
+                frm.btnStart_Pause_Reset.Text = btnText;
+                frm.guna2HtmlToolTip1.SetToolTip(frm.btnStart_Pause_Reset, ToolTipText);
+            }
+            async void Start()
+            {
+                EnableOrDisableLevelComboBox(false);
+                DiscoverAllBoxes();
+                await Task.Delay(PreStartTime * 1000);
+                CoverAllBoxes();
+                EnableOrDisableTimer(true);
+                EnableOrDisableAllBoxes(true);
+                ChangePlay_Stop_ResetButtonTextAndToolTip("Stop", "Press To Pause");
+                GameMode = enGameMode.Playing;
+            }
+            void Stop()
+            {
+                EnableOrDisableTimer(false);
+                EnableOrDisableAllBoxes(false);
+                ChangePlay_Stop_ResetButtonTextAndToolTip("Resume", "Press To Resume");
+                GameMode = enGameMode.Stopped;
+            }
+            void Resume()
+            {
+                EnableOrDisableTimer(true);
+                EnableOrDisableAllBoxes(true);
+                ChangePlay_Stop_ResetButtonTextAndToolTip("Stop", "Press To Pause");
+                GameMode = enGameMode.Playing;
+            }
+            void Reset()
+            {
+                ResetBoxes();
+                EnableOrDisableLevelComboBox(true);
+                ChangePlay_Stop_ResetButtonTextAndToolTip("Start", "Press To Start");
+                GameMode = enGameMode.ReadyToStart;
+                IsRightChoice = true;
+                RandomizeImagesArray();
+                SetBoxsImageIndexRandomInTag();
+                GameStatus.Score = 0;
+                ChangeScoreLabelValue();
+                ChangeScoreProogressBarValue();
+                ChangeScoreProogressBarValue();
+                ChangeTimeLeftAndTimeLabels();
+                ChangeResultLable("");
+                //GameStatus.TimeLeft = GameStatus.GameTime;
+                //ChangeTimerLableValue();
+                //ChangeTimerProgressBarValue();
+            }
+          
+
+            public enum enLevel { Easy, Medium, Hard, VeryHard }
+            public enum enGameMode { ReadyToStart, Playing, Stopped, End }
+
+            public enLevel Level;
 
             public enGameMode GameMode;
             public clsMemoryGame(Form1 form)
             {
                 frm = form;
                 InitializeBoxesArray();
+                GameStatus.FullScore = Convert.ToByte(Boxes.Length / 2);
                 InitializeImagesArray();
-                GameStatus.GameTime = 50;//
-                frm.cpbTimer.Maximum = GameStatus.GameTime;
                 Reset();
-                //SetBoxsImageIndexRandomInTag();
-                //IsRightChoice = true;
-                //EnableOrDisableAllBoxes(false);
-                //frm.cpbTimer.Value = GameStatus.GameTime;
-                //frm.lblTimer.Text = GameStatus.GameTime.ToString();
-               
+                GameMode = enGameMode.ReadyToStart;
+                PreStartTime = 3;  
             }
             public void ClickOnBox(Guna2PictureBox pb)
             {
-                if (GameStatus.NumOfOpenedBoxes == 0)
+                if (NumOfOpenedBoxes == 0)
                 {
                     CheckIsThereBoxesWillClosed();
+                    EnableOrDisableBox(pb, false);
                     DiscoverBox(pb);
-                    GameStatus.NumOfOpenedBoxes++;
+                    NumOfOpenedBoxes++;
                     OpenedBox1 = pb;
                     return;
                 }
 
-                if (GameStatus.NumOfOpenedBoxes == 1)
+                if (NumOfOpenedBoxes == 1)
                 {
                     DiscoverBox(pb);
-                    GameStatus.NumOfOpenedBoxes = 0;
+                    NumOfOpenedBoxes = 0;
                     OpenedBox2 = pb;
                     CheckBoxesIsSame();
                 }
-            }
-            public void Start()
-            {
-                EnableOrDisableTimer(true);
-                EnableOrDisableAllBoxes(true);
             }
             public void TimerTick()
             {
@@ -240,22 +339,51 @@ namespace MemoryGame
                     TimeOver();
                 }
             }
-            public void Reset()
+            public void LevelChanged()
             {
-                CoverAllBoxes();
-                EnableOrDisableAllBoxes(false);
-                IsRightChoice = true;
-                RandomizeImagesArray();
-                SetBoxsImageIndexRandomInTag();
-                GameStatus.Score = 0;
-                ChangeScoreLabelValue();
-                ChangeScoreProogressBarValue();
-                ChangeScoreProogressBarValue();
-                GameStatus.TimeLeft = GameStatus.GameTime;
-                ChangeTimerLableValue();
-                ChangeTimerProgressBarValue();
-            }
+                switch (Level)
+                {
+                    case enLevel.Easy:
+                        ChangeGameTime(80);
+                        break;
 
+                    case enLevel.Medium:
+                        ChangeGameTime(50);
+                        break;
+
+                    case enLevel.Hard:
+                        ChangeGameTime(30);
+                            break;
+
+                    case enLevel.VeryHard:
+                        ChangeGameTime(15);
+                        break;
+
+                }
+            }
+            public void ClickOnPlay_Stop_Resut_Button()
+            {
+                switch (GameMode)
+                {
+                    case clsMemoryGame.enGameMode.ReadyToStart:
+                        Start();
+                        break;
+
+                    case clsMemoryGame.enGameMode.Playing:
+                        Stop();
+                        break;
+
+                    case clsMemoryGame.enGameMode.Stopped:
+                        Resume();
+                        break;
+
+                    case clsMemoryGame.enGameMode.End:
+                        Reset();
+                        break;
+
+                }
+            }
+            
 
         }
         public Form1()
@@ -268,6 +396,7 @@ namespace MemoryGame
         private void Form1_Load(object sender, EventArgs e)
         {
             MemoryGame = new clsMemoryGame(this);
+            cbLevel.SelectedIndex = 0;
         }
 
         private void pb1_Click(object sender, EventArgs e)
@@ -357,14 +486,13 @@ namespace MemoryGame
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (MemoryGame.GameMode == clsMemoryGame.enGameMode.Play)
-                MemoryGame.Start();
+            MemoryGame.ClickOnPlay_Stop_Resut_Button();
+        }
 
-        //    switch (MemoryGame.GameMode)
-        //    {
-        //        case clsMemoryGame.enGameMode.
-        //    MemoryGame.Start();
-        //    }
+        private void cbLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MemoryGame.Level = (clsMemoryGame.enLevel)cbLevel.SelectedIndex;
+            MemoryGame.LevelChanged();
         }
     }
 

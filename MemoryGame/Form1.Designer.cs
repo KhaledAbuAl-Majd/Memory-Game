@@ -57,6 +57,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.cbLevel = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.guna2HtmlToolTip1 = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             ((System.ComponentModel.ISupportInitialize)(this.pb1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb16)).BeginInit();
@@ -93,6 +97,7 @@
             // pb1
             // 
             this.pb1.BackColor = System.Drawing.Color.Transparent;
+            this.pb1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb1.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb1.ImageRotate = 0F;
@@ -134,10 +139,11 @@
             // pb16
             // 
             this.pb16.BackColor = System.Drawing.Color.Transparent;
+            this.pb16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb16.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb16.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb16.ImageRotate = 0F;
-            this.pb16.Location = new System.Drawing.Point(460, 381);
+            this.pb16.Location = new System.Drawing.Point(459, 384);
             this.pb16.Name = "pb16";
             this.pb16.Size = new System.Drawing.Size(133, 112);
             this.pb16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -148,10 +154,11 @@
             // pb12
             // 
             this.pb12.BackColor = System.Drawing.Color.Transparent;
+            this.pb12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb12.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb12.ImageRotate = 0F;
-            this.pb12.Location = new System.Drawing.Point(460, 257);
+            this.pb12.Location = new System.Drawing.Point(459, 260);
             this.pb12.Name = "pb12";
             this.pb12.Size = new System.Drawing.Size(133, 112);
             this.pb12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -162,10 +169,11 @@
             // pb8
             // 
             this.pb8.BackColor = System.Drawing.Color.Transparent;
+            this.pb8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb8.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb8.ImageRotate = 0F;
-            this.pb8.Location = new System.Drawing.Point(460, 133);
+            this.pb8.Location = new System.Drawing.Point(459, 136);
             this.pb8.Name = "pb8";
             this.pb8.Size = new System.Drawing.Size(133, 112);
             this.pb8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -176,10 +184,11 @@
             // pb4
             // 
             this.pb4.BackColor = System.Drawing.Color.Transparent;
+            this.pb4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb4.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb4.ImageRotate = 0F;
-            this.pb4.Location = new System.Drawing.Point(460, 9);
+            this.pb4.Location = new System.Drawing.Point(459, 12);
             this.pb4.Name = "pb4";
             this.pb4.Size = new System.Drawing.Size(133, 112);
             this.pb4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -190,6 +199,7 @@
             // pb15
             // 
             this.pb15.BackColor = System.Drawing.Color.Transparent;
+            this.pb15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb15.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb15.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb15.ImageRotate = 0F;
@@ -204,6 +214,7 @@
             // pb11
             // 
             this.pb11.BackColor = System.Drawing.Color.Transparent;
+            this.pb11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb11.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb11.ImageRotate = 0F;
@@ -218,6 +229,7 @@
             // pb7
             // 
             this.pb7.BackColor = System.Drawing.Color.Transparent;
+            this.pb7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb7.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb7.ImageRotate = 0F;
@@ -232,6 +244,7 @@
             // pb3
             // 
             this.pb3.BackColor = System.Drawing.Color.Transparent;
+            this.pb3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb3.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb3.ImageRotate = 0F;
@@ -246,6 +259,7 @@
             // pb14
             // 
             this.pb14.BackColor = System.Drawing.Color.Transparent;
+            this.pb14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb14.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb14.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb14.ImageRotate = 0F;
@@ -260,6 +274,7 @@
             // pb10
             // 
             this.pb10.BackColor = System.Drawing.Color.Transparent;
+            this.pb10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb10.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb10.ImageRotate = 0F;
@@ -274,6 +289,7 @@
             // pb6
             // 
             this.pb6.BackColor = System.Drawing.Color.Transparent;
+            this.pb6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb6.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb6.ImageRotate = 0F;
@@ -288,6 +304,7 @@
             // pb2
             // 
             this.pb2.BackColor = System.Drawing.Color.Transparent;
+            this.pb2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb2.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb2.ImageRotate = 0F;
@@ -302,6 +319,7 @@
             // pb13
             // 
             this.pb13.BackColor = System.Drawing.Color.Transparent;
+            this.pb13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb13.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb13.ImageRotate = 0F;
@@ -316,6 +334,7 @@
             // pb9
             // 
             this.pb9.BackColor = System.Drawing.Color.Transparent;
+            this.pb9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb9.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb9.ImageRotate = 0F;
@@ -330,6 +349,7 @@
             // pb5
             // 
             this.pb5.BackColor = System.Drawing.Color.Transparent;
+            this.pb5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb5.Image = global::MemoryGame.Properties.Resources.question_mark_96;
             this.pb5.ImageRotate = 0F;
@@ -425,7 +445,8 @@
             this.btnStart_Pause_Reset.Name = "btnStart_Pause_Reset";
             this.btnStart_Pause_Reset.Size = new System.Drawing.Size(138, 41);
             this.btnStart_Pause_Reset.TabIndex = 4;
-            this.btnStart_Pause_Reset.Text = "Start";
+            this.btnStart_Pause_Reset.Text = "Playing";
+            this.guna2HtmlToolTip1.SetToolTip(this.btnStart_Pause_Reset, "Press To Playing");
             this.btnStart_Pause_Reset.UseTransparentBackground = true;
             this.btnStart_Pause_Reset.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
@@ -462,6 +483,60 @@
             this.guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
             this.guna2MessageDialog1.Text = null;
             // 
+            // cbLevel
+            // 
+            this.cbLevel.AutoRoundedCorners = true;
+            this.cbLevel.BackColor = System.Drawing.Color.Transparent;
+            this.cbLevel.BorderRadius = 17;
+            this.cbLevel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbLevel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLevel.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbLevel.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbLevel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLevel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbLevel.ItemHeight = 30;
+            this.cbLevel.Items.AddRange(new object[] {
+            "Easy",
+            "Medium",
+            "Hard",
+            "Very Hard"});
+            this.cbLevel.Location = new System.Drawing.Point(11, 434);
+            this.cbLevel.Name = "cbLevel";
+            this.cbLevel.Size = new System.Drawing.Size(135, 36);
+            this.cbLevel.TabIndex = 7;
+            this.cbLevel.SelectedIndexChanged += new System.EventHandler(this.cbLevel_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(43, 397);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 30);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Level";
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.BackColor = System.Drawing.Color.Transparent;
+            this.lblResult.Font = new System.Drawing.Font("Snap ITC", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.ForeColor = System.Drawing.Color.Lime;
+            this.lblResult.Location = new System.Drawing.Point(936, 164);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(0, 45);
+            this.lblResult.TabIndex = 9;
+            // 
+            // guna2HtmlToolTip1
+            // 
+            this.guna2HtmlToolTip1.AllowLinksHandling = true;
+            this.guna2HtmlToolTip1.IsBalloon = true;
+            this.guna2HtmlToolTip1.MaximumSize = new System.Drawing.Size(0, 0);
+            this.guna2HtmlToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -469,7 +544,10 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1059, 744);
+            this.ClientSize = new System.Drawing.Size(1075, 744);
+            this.Controls.Add(this.lblResult);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbLevel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnStart_Pause_Reset);
@@ -535,6 +613,10 @@
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
         private System.Windows.Forms.Label lblScore;
+        private Guna.UI2.WinForms.Guna2ComboBox cbLevel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblResult;
+        private Guna.UI2.WinForms.Guna2HtmlToolTip guna2HtmlToolTip1;
     }
 }
 
