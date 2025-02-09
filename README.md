@@ -8,8 +8,8 @@ Welcome to the Memory Game! This project is a classic memory matching game devel
 - **Visual Appeal**: Attractive UI designed with Guna 2 for a modern gaming experience.
 - **Timer**: Each game comes with a countdown timer, adding excitement and urgency.
 - **Score Tracking**: Keep track of matched pairs and see your score progress.
-- **Random Pictures For Each Time.
-- **You Can Add Pictures As You Want; To increase the randomness of the Pictures.
+- Random Pictures For Each Time.
+- You Can Add Pictures As You Want; To increase the randomness of the Pictures.
 
 ## Technologies Used
 - **C#**: The primary programming language for game logic.
