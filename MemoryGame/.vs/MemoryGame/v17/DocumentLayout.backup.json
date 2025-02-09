@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\Visual Studio\\source\\Projects\\Course 14\\MemoryGame\\MemoryGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F323596A-6DDF-445E-9288-9E3E94848A72}|MemoryGame.csproj|E:\\Visual Studio\\source\\Projects\\Course 14\\MemoryGame\\MemoryGame\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F323596A-6DDF-445E-9288-9E3E94848A72}|MemoryGame.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F323596A-6DDF-445E-9288-9E3E94848A72}|MemoryGame.csproj|e:\\visual studio\\source\\projects\\course 14\\memorygame\\memorygame\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F323596A-6DDF-445E-9288-9E3E94848A72}|MemoryGame.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F323596A-6DDF-445E-9288-9E3E94848A72}|MemoryGame.csproj|E:\\Visual Studio\\source\\Projects\\Course 14\\MemoryGame\\MemoryGame\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F323596A-6DDF-445E-9288-9E3E94848A72}|MemoryGame.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,25 +30,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course 14\\MemoryGame\\MemoryGame\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course 14\\MemoryGame\\MemoryGame\\Form1.cs*",
-              "RelativeToolTip": "Form1.cs*",
-              "ViewState": "AgIAANsBAAAAAAAAAAAIwOgBAAA3AAAAAAAAAA==",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course 14\\MemoryGame\\MemoryGame\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABQAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-08T11:54:43.412Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "E:\\Visual Studio\\source\\Projects\\Course 14\\MemoryGame\\MemoryGame\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course 14\\MemoryGame\\MemoryGame\\Form1.cs [Design]*",
-              "RelativeToolTip": "Form1.cs [Design]*",
+              "ToolTip": "E:\\Visual Studio\\source\\Projects\\Course 14\\MemoryGame\\MemoryGame\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-08T10:55:11.171Z",
               "EditorCaption": " [Design]"

@@ -199,7 +199,7 @@ namespace MemoryGame
                 if (GameStatus.Score == GameStatus.FullScore) 
                 {
                     GameOver();
-                    ResultMessage("You Win", MessageDialogIcon.Information);
+                    ResultMessage("Game Over, You Win", MessageDialogIcon.Information);
                     ChangeResultLable("Win");
                 }
             }
@@ -207,7 +207,7 @@ namespace MemoryGame
             {
                 GameOver();
                 DiscoverAllBoxes();
-                ResultMessage("You Are Lose", MessageDialogIcon.Error);
+                ResultMessage("Time Over,You Lose", MessageDialogIcon.Error);
                 ChangeResultLable("Lose");
             }
             void EnableOrDisableLevelComboBox(bool Value)
